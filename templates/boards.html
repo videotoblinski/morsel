@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Morsel - {{ name }}</title>
+    <link rel="stylesheet" href="/static/morsel.css" />
+    <link rel="stylesheet" href="/static/theme.css" />
+  </head>
+  <body>
+    <h1>Welcome, {{ name }}</h1>
+    {% include "nav.html" %}
+    <div class="feed_panel panel">
+      <table width="100%" cellspacing="0px">
+      {% for board in boards -%}
+        <tr class="board">
+        {% if board['name'] in subbed -%}
+          <td width="32px"><a href="/b/{{ board['name'] }}?unsubscribe" class="subbtn remove">+</a></td>
+        {% else -%}
+          <td width="32px"><a href="/b/{{ board['name'] }}?subscribe" class="subbtn">+</a></td>
+        {% endif -%}
+          <td>
+            <h3><a href="/b/{{ board['name'] }}">{{ board['name'] }}</a></h3>
+            {{ board['description'] }}
+          </td>
+        </tr>
+      {% endfor -%}
+      </table>
+    </div>
+    {% include "nav.html" %}
+  </body>
+</html>

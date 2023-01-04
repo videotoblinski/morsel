@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Morsel - {{ name }}</title>
+    <link rel="stylesheet" href="/static/morsel.css" />
+    <link rel="stylesheet" href="/static/theme.css" />
+  </head>
+  <body>
+    <h1>Welcome, {{ name }}</h1>
+    {% include "nav.html" %}
+    <div class="feed_panel panel">
+      <h2>{{ bname }}</h2>
+      <p class="extra-room">Moderated by: <span class="mods">{{ bmods }}</span></p>
+      <p class="extra-room">{{ bdesc }}</p>
+      {% if subbed -%}
+      <a href="/b/{{ bname }}?unsubscribe" class="red abtn">Unsubscribe from this board</a>
+      {% else -%}
+      <a href="/b/{{ bname }}?subscribe" class="mods abtn">Subscribe to this board</a>
+      {% endif -%}      
+      <hr/>
+      {% if subbed -%}
+      <form action="/postto/{{ bname }}" method="POST">
+      <table width="100%"><tr>
+        <td width="64px">
+          <img src="{{ uavatar }}">
+        </td>
+        <td>
+          <textarea
+             class="entry"
+             placeholder="Share your thoughts! Type here."
+             name="postbody"
+          ></textarea>
+          <div class="buttons">
+            <input type="submit" value="Post!" />
+          </div>
+        </td>
+      </tr></table>
+      </form>
+      <hr/>
+      {% endif -%}
+      <h2>Recent Posts</h2>
+      <table width="100%" cellspacing="0px">
+      {% for post in posts -%}
+        <tr class="post">
+          <td width="72px">
+            <img src="{{ post['author_avatar'] }}" />
+          </td>
+          <td>
+            <h3><a href="/u/{{ post['author'] }}">{{ post['author'] }}</a> says...</h3>
+            <p>{{ post['content'] }}</p>
+          </td>
+        </tr>
+      {% endfor -%}
+      </table>
+    </div>
+    {% include "nav.html" %}
+  </body>
+</html> 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/static/morsel.css" />
+    <link rel="stylesheet" href="/static/theme.css" />
+  </head>
+  <body>
+    <h1>Register for Morsel</h1>
+    <div class="login_panel panel">
+{% if error %}
+      <div class="error">
+        {{ error }}
+      </div>
+{% endif %}
+      <form action="/reg" method="POST">
+        <ul>
+          <li>Password must be 8 characters long.</li>
+          <li>Username may not contain offensive content.</li>
+          <li>Your username cannot be changed later.</li>
+        </ul>
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <div class="buttons">
+          <a href="/login" class="abtn">Log In</a>
+          <input type="submit" value="Register New Account" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

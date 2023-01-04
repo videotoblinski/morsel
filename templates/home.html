@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Morsel - {{ name }}</title>
+    <link rel="stylesheet" href="/static/morsel.css" />
+    <link rel="stylesheet" href="/static/theme.css" />
+  </head>
+  <body>
+    <h1>Welcome, {{ name }}</h1>
+    {% include "nav.html" %}
+    <div class="feed_panel panel">
+      <p>...stuff goes here!</p>
+    </div>
+    {% include "nav.html" %}
+  </body>
+</html>

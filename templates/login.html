@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/morsel.css" />
+    <link rel="stylesheet" href="/static/theme.css" />
+  </head>
+  <body>
+    <h1>Log into Morsel</h1>
+    <div class="login_panel panel">
+{% if error %}
+      <div class="error">
+        {{ error }}
+      </div>
+{% endif %}
+      <form action="/login" method="POST">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <div class="buttons">
+          <a href="/reg" class="abtn">Register</a>
+          <input type="submit" value="Log In" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
